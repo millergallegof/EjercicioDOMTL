@@ -26,10 +26,11 @@ container.appendChild(tabla);
 thNombre.addEventListener('click', async (e) => {
     if (temporal === "Des") {
         await ordenarAsc();
-    } else if (temporal === "Asc"){
-        ordenarDes();
     } else {
-        mostrarDatos(data)
+        ordenarDes();
+    // } else {
+    //     mostrarDatos()
+    // }
     }
 })
 
@@ -39,27 +40,27 @@ function ordenarAsc() {
     tabla.innerHTML = "";
     tabla.append(tr)
     tr.append(thNombre, thApellido, thEdad, thEmail, thTelefono)
-    mostrarDatos(listaOrdenada);
+    mostrarDatos();
 
 }
 
 function ordenarDes() {
-    temporal = ""
+    temporal = "Des"
 
     const listaDes = data.sort(sortArrayDes);
     tabla.innerHTML = "";
     tabla.append(tr)
     tr.append(thNombre, thApellido, thEdad, thEmail, thTelefono)
-    mostrarDatos(listaDes);
+    mostrarDatos();
 
 }
 
-mostrarDatos(data);
+mostrarDatos();
 
 
-function mostrarDatos(lista) {
-    temporal = "Des"
-    lista.map((dato) => {
+function mostrarDatos() {
+    // temporal = "Des"
+    data.map((dato) => {
         console.log(dato);
         const trCont = document.createElement("tr");
         for (const key in dato) {
